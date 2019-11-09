@@ -62,24 +62,6 @@ function newTrain() {
   database.ref().push(newTrain);
 }
 
-//this function displays train info
-function displayTrainInfo() {
-  var nextTrain = timeTilNextTrain();
-
-  for (var i = 0; i < trains.length; i++) {
-    console.log(trains[i].trainName);
-    var newRow = $("<tr>").append(
-      $("<td>").text(trains[i].trainName),
-      $("<td>").text(trains[i].destinationName),
-      $("<td>").text(trains[i].firstTrainTime),
-      $("<td>").text(moment(nextTrain).format("hh:mm"))
-    );
-
-    // Append the new row to the table
-    $("#train-table > tbody").append(newRow);
-  }
-}
-
 // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
 database.ref().on("child_added", function(childSnapshot) {
   console.log(childSnapshot.val());
@@ -143,6 +125,5 @@ $(".addTrain").on("click", function(event) {
   event.preventDefault();
   storeData();
   newTrain();
-  //displayTrainInfo();
   emptyEntries();
 });
