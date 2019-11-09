@@ -90,7 +90,7 @@ database.ref().on("child_added", function(childSnapshot) {
   var firstTrainTime = childSnapshot.val().firstTrainTime;
   var trainFrequency = childSnapshot.val().trainFrequency;
 
-  var nextTrain = timeTilNextTrain(trainFrequency);
+  var nextTrain = timeTilNextTrain(trainFrequency, firstTrainTime);
 
   // Create the new row
   var newRow = $("<tr>").append(
@@ -105,7 +105,7 @@ database.ref().on("child_added", function(childSnapshot) {
 });
 
 //this code calculates time remaining for trains
-function timeTilNextTrain(trainFrequency) {
+function timeTilNextTrain(trainFrequency, firstTrainTime) {
   // Assumptions
   var tFrequency = trainFrequency;
 
@@ -117,8 +117,8 @@ function timeTilNextTrain(trainFrequency) {
   console.log(firstTimeConverted);
 
   // Current Time
-  var currentTime = moment();
-  console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+  var timern = moment();
+  console.log("CURRENT TIME: " + moment(timern).format("hh:mm"));
 
   // Difference between the times
   var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
