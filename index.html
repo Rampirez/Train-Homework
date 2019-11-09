@@ -18,10 +18,45 @@
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
     <!-- Added Moment JS -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <style>
+      body {
+        background-color: #8a8a8a;
+        background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+        /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+      }
+    </style>
     <title>Document</title>
   </head>
   <body>
-    <div class="float-left m-4 mx-auto text-center w-25 border rounded">
+      <div class="jumbotron jumbotron-fluid text-center">
+          <div class="container">
+            <h1 class="display-4">Where is my train?</h1>
+            <p class="lead">Find out when the next train is.</p>
+          </div>
+        </div>
+    <div class="m-4 bg-white w-50 border rounded mx-auto">
+      <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#"
+          ><strong>Train Info Shown Here</strong></a
+        >
+      </nav>
+      <p class="m-5 text-center">
+        Current time:<br /><b><span id="currentTime"></span></b>
+      </p>
+      <table class="table table-sm table-hover p-5" id="train-table">
+        <thead>
+          <tr>
+            <th scope="col">Train Name</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Start time</th>
+            <th scope="col">Next Arrival</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="m-4 bg-white text-center w-25 border rounded mx-auto">
       <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#"><strong>Train Parameters</strong></a>
       </nav>
@@ -65,28 +100,6 @@
       <button type="button" class="addTrain mx-auto btn btn-primary">
         Add Train
       </button>
-    </div>
-
-    <div class="float-left m-4 mx-auto w-50 border rounded">
-      <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#"
-          ><strong>Train Info Shown Here</strong></a
-        >
-      </nav>
-      <p>
-        Current time: <b><span id="currentTime"></span></b>
-      </p>
-      <table class="table table-sm table-hover" id="train-table">
-        <thead>
-          <tr>
-            <th scope="col">Train Name</th>
-            <th scope="col">Destination</th>
-            <th scope="col">Start time</th>
-            <th scope="col">Next Arrival</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
     </div>
   </body>
 
