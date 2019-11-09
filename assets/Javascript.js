@@ -30,17 +30,24 @@ function newTrain() {
 function displayTrainInfo() {
     for (var i = 0; i < trains.length; i++) {
         console.log(trains[i].trainName);
-        $('#trainInfo').append(trains[i].trainName);
+        $('#trainInfo').append(trains[i].trainName + " TRAIN");
+        $('#trainInfo').append('<br>')
+        $('#trainInfo').append('DESTINATION:' + trains[i].destinationName);
+        var nextTrainTime = timeTilNextTrain();
+        $('#trainInfo').append('<br>')
+        $('#trainInfo').append("ARRIVAL TIME: " + moment(nextTrainTime).format("hh:mm"))
+
     }
+
 }
 
 //this code calculates time remaining for trains
 function timeTilNextTrain() {
     // Assumptions
-    var tFrequency = 3;
+    var tFrequency = trainFrequency;
 
     // Time is 3:30 AM
-    var firstTime = "03:30";
+    var firstTime = firstTrainTime;
 
     // First Time (pushed back 1 year to make sure it comes before current time)
     var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
@@ -65,6 +72,8 @@ function timeTilNextTrain() {
     // Next Train
     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
     console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+
+    return nextTrain;
 }
 
 $(".addTrain").on("click", function(event) {
